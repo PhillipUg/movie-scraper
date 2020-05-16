@@ -1,12 +1,13 @@
 require 'nokogiri'
 require 'open-uri'
+require 'byebug'
 
 
-Url1 = "https://o2tvseries.com"
+Url1 = "https://o2tvseries.com/search/list_all_tv_series"
 Url2 = "https://toxicwap.com/New_Movies/az/"
 
 
-
+# MOVIES
 
 def page(letter)
 		puts "Loading Movies in category [#{letter}]...."
@@ -40,4 +41,31 @@ def movies_by_title(title)
 	results.empty? ? ["Movie Not Found!"] : results 
 end
 
-# movies_by_year(2020)
+# SERIES
+
+def all_series
+	puts
+	puts "Loading..."
+	html = Nokogiri::HTML(URI.open(Url1))
+	html.css('.data a').map {|title| title.text}
+end
+
+def serie_by_title(title)
+	puts
+	puts "Loading series that match '#{title}'..."
+	puts 
+	series = all_series
+
+	results = []
+	series.each {|item| results << item if item.downcase.include?(title.downcase)}
+	results.empty? ? ["Movie Not Found!"] : results 
+end
+
+def latest
+	puts
+	puts "Loading newest series..."
+	puts '-------------------------'
+	url = Url1[0...-18] + 'recently_added'
+	html = Nokogiri::HTML(URI.open(url))
+	html.css('.data').map {|title| title.text.gsub(/[\t\n]/, '').gsub('  ', ' ').gsub('Season', 'Sn.').gsub('Episode', 'Ep.').insert(-2, "/#{Time.now.year}")}
+end
