@@ -1,5 +1,5 @@
-# movie-scraper
-A simple Movie and Series scraper developed with Ruby.
+# Movie Scraper
+A simple Movies and Series scraper developed with Ruby.
 
 <!--
 *** Thanks for checking out this README Template. If you have a suggestion that would
@@ -31,7 +31,7 @@ A simple Movie and Series scraper developed with Ruby.
   <h1 align="center">Movie Scraper</h1>
 
   <p align="center">
-  	A simple Movie and Series Scraper developed with Ruby.
+  	A simple Movies and Series Scraper developed with Ruby.
     <br />
     <a href="https://github.com/PhillipUg/movie-scraper"><strong>Explore the docs »</strong></a>
     <br />
@@ -56,8 +56,6 @@ A simple Movie and Series scraper developed with Ruby.
 ## About The Project
 
 This project was built in my free time and is intended for personal use. I scrap the movie data from [o2tvseries](www.o2tvseries.com) and [toxicwap](www.toxicwap.com).
-
-[![Product Name Screen Shot][product-screenshot]][screenshot-url]
 
 <!-- ABOUT THE PROJECT -->
 ## Installation
