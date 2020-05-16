@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-require 'colorize'
+
 
 Url1 = "https://o2tvseries.com"
 Url2 = "https://toxicwap.com/New_Movies/az/"
@@ -9,10 +9,9 @@ Url2 = "https://toxicwap.com/New_Movies/az/"
 
 
 def page(letter)
+		puts "Loading Movies in category [#{letter}]...."
 		page_url = Url2 + letter + '.php'
 		html = Nokogiri::HTML(URI.open(page_url))
-
-		
 		html.css('li').map {|title| title.text}
 end
 
@@ -26,12 +25,19 @@ def movies_by_year(year)
 	puts "Fetching movies ...."
 	puts ""
 	movies = all_movies
-	counter = 1
-	movies.each do |title|
-		# sanitized = title.scan(/\d{4}/).join
-		puts "#{counter}. #{title.blue}" #if sanitized.to_i == year
-		counter += 1
+
+	movies.keep_if do |title|
+		sanitized = title.scan(/\d{4}/).join
+		title if sanitized.to_i == year
 	end
-	nil
 end
 
+def movies_by_title(title)
+	movies = all_movies
+
+	results = []
+	movies.each {|item| results << item if item.downcase.include?(title.downcase)}
+	results.empty? ? ["Movie Not Found!"] : results 
+end
+
+# movies_by_year(2020)
