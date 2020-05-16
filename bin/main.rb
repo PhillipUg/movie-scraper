@@ -55,6 +55,22 @@ elsif choice == 2
 		puts "Invalid Entry!, Enter 1, 2 or 3: "
 		pick = gets.chomp.to_i
 	end
+	if pick == 1		
+		latest.each.with_index {|ele, idx| puts "#{idx + 1}. #{ele.red}"}
+	elsif pick == 2
+		all_series.each.with_index {|ele,idx| puts "#{idx+1}. #{ele.red}"}
+	elsif pick == 3
+		puts "Enter a Title: "
+		title = gets.chomp
+		puts
+		 serie_by_title(title).each.with_index do |ele, idx|
+			if ele == "Movie Not Found!"
+				puts "Movie Not Found!"
+			else
+				puts "#{idx + 1}. #{ele.red}"
+			end
+		end
+	end
 end
 
 
