@@ -1,14 +1,16 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    mini_portile2 (2.4.0)
-    nokogiri (1.10.9)
-      mini_portile2 (~> 2.4.0)
+    colorize (0.8.1)
+    nokogiri (1.14.3-x86_64-linux)
+      racc (~> 1.4)
+    racc (1.6.2)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
+  colorize
   nokogiri
 
 BUNDLED WITH
